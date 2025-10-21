@@ -12,7 +12,7 @@
     <script type="module" src="./src/js/main.js" async></script>
 </head>
 <body>
-<div class="min-h-screen bg-white flex flex-col p-6 md:p-12">
+<!-- <div class="min-h-screen bg-white flex flex-col p-6 md:p-12">
     <main class="flex-grow flex flex-col justify-center max-w-6xl mx-auto w-full">
         <video id="splash-video" class="top-0 left-0 h-36 w-full object-cover border-transparent mb-16" autoplay playsinline loop muted>
             <source src="./src/assets/video/dirksplash2.mp4">
@@ -54,6 +54,44 @@
     <footer class="mt-8 text-center text-xs text-gray-500">
         © <span id="copyright"></span> Dirk Interactive Inc. All rights reserved.
     </footer>
-</div>
+</div> -->
+
+<body class="bg-black text-white overflow-x-hidden">
+  <!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50">
+  <!-- Nav content container -->
+  <div class="flex items-baseline gap-12 px-16 py-6">
+    <!-- Logo -->
+    <a href="/" class="text-[2.3rem] font-extrabold leading-none tracking-tight">dirk</a>
+
+    <!-- Links -->
+    <nav class="flex gap-10 text-[0.78rem] uppercase tracking-[0.25em] text-white/80">
+      <a href="/about.html" class="hover:text-white transition-colors duration-200">About</a>
+      <a href="/games.html" class="hover:text-white transition-colors duration-200">Games</a>
+      <a href="/careers.html" class="hover:text-white transition-colors duration-200">Careers</a>
+    </nav>
+  </div>
+
+  <!-- Full-width divider -->
+  <div class="h-px w-full bg-white/25"></div>
+</header>
+
+
+
+  <!-- Hero Section -->
+  <section class="relative h-screen w-full">
+    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/src/assets/videos/hero.mp4" type="video/mp4">
+    </video>
+    <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+    <div class="absolute bottom-16 right-16 text-right">
+      <p class="text-xs tracking-widest mb-2">a video games studio from Vancouver, Canada</p>
+      <p class="text-xs tracking-widest mb-4">a collective for ambitious creative professionals</p>
+      <p class="text-xs tracking-widest text-gray-300">ART • ENGINEERING • MAGIC</p>
+      <h1 class="text-4xl font-bold mt-8">dirk</h1>
+    </div>
+  </section>
+</body>
+
 </body>
 </html>
