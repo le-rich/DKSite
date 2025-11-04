@@ -1,97 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dirk - Game Studio and Consultancy</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link href="./src/css/stylesheet.css" rel="stylesheet">
-    <script type="module" src="./src/js/main.js" async></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dirk Interactive</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <link href="./src/css/stylesheet.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script type="module" src="/src/js/main.js" defer></script>
 </head>
-<body>
-<!-- <div class="min-h-screen bg-white flex flex-col p-6 md:p-12">
-    <main class="flex-grow flex flex-col justify-center max-w-6xl mx-auto w-full">
-        <video id="splash-video" class="top-0 left-0 h-36 w-full object-cover border-transparent mb-16" autoplay playsinline loop muted>
-            <source src="./src/assets/video/dirksplash2.mp4">
-            Your browser does not support the video tag.
-        </video>
-        <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-4 -ml-[4px] md:-ml-[8px] lg:-ml-[10px]">
-            DIRK
-        </h1>
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end">
-            <div class="mb-6 md:mb-0">
-                <p class="text-sm md:text-base max-w-md">
-                    Dirk is a video game studio from Vancouver, British Columbia.
-                </p>
-                <p class="text-sm md:text-base mt-2">
-                    We are working on our debut title.
-                </p>
-            </div>
-            <nav class="flex flex-col md:items-end space-y-1 hidden">
-                <a href="/career" class="text-sm md:text-base hover:underline">
-                    Careers
-                </a>
-                <a href="/contact" class="text-sm md:text-base hover:underline">
-                    Contact
-                </a>
-                <div class="pt-2 flex items-center space-x-4 hidden">
-                    <a href="https://instagram.com" aria-label="Instagram">
-                        <img width="24" height="24" src="./src/assets/socials/Instagram_Glyph_Black.svg" alt="Instagram"/>
-                    </a>
-                    <a href="https://github.com" aria-label="GitHub">
-                        <img width="24" height="24" src="./src/assets/socials/github-mark.svg" alt="Github"/>
-                    </a>
-                    <a href="" aria-label="Email">
-                        <img width="24" height="24" src="./src/assets/socials/envelope-regular.svg" alt="Email"/>
-                    </a>
-                </div>
-            </nav>
-        </div>
-    </main>
-    <footer class="mt-8 text-center text-xs text-gray-500">
-        © <span id="copyright"></span> Dirk Interactive Inc. All rights reserved.
-    </footer>
-</div> -->
 
-<body class="bg-black text-white overflow-x-hidden">
+<body class="bg-black text-white font-['Reddit_Sans'] overflow-x-hidden scroll-smooth">
+
   <!-- Navbar -->
-<header class="fixed top-0 left-0 w-full z-50">
-  <!-- Nav content container -->
-  <div class="flex items-baseline gap-12 px-16 py-6">
-    <!-- Logo -->
-    <a href="/" class="text-[2.3rem] font-extrabold leading-none tracking-tight">dirk</a>
+  <header id="navbar" class="fixed top-0 left-0 w-full z-[999] bg-black/60 backdrop-blur-sm border-b border-white/20 transition-opacity duration-500">
+    <div class="flex items-baseline gap-12 px-16 py-6">
+      <a href="/" class="text-[2.3rem] font-extrabold leading-none tracking-tight">dirk</a>
+      <nav class="flex gap-10 text-[0.78rem] uppercase tracking-[0.25em] text-white/80">
+        <a href="#dirk4ever" class="hover:text-white transition-colors duration-200">About</a>
+        <a href="#games" class="hover:text-white transition-colors duration-200">Games</a>
+    <a href="/src/pages/careers.html" class="hover:text-white transition-colors duration-200">Careers</a>
+      </nav>
+    </div>
+    <div class="h-px w-full bg-white/25"></div>
+  </header>
 
-    <!-- Links -->
-    <nav class="flex gap-10 text-[0.78rem] uppercase tracking-[0.25em] text-white/80">
-      <a href="/about.html" class="hover:text-white transition-colors duration-200">About</a>
-      <a href="/games.html" class="hover:text-white transition-colors duration-200">Games</a>
-      <a href="/careers.html" class="hover:text-white transition-colors duration-200">Careers</a>
-    </nav>
-  </div>
-
-  <!-- Full-width divider -->
-  <div class="h-px w-full bg-white/25"></div>
-</header>
-
-
-
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <section class="relative h-screen w-full">
     <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
       <source src="/src/assets/videos/hero.mp4" type="video/mp4">
     </video>
     <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+
     <div class="absolute bottom-16 right-16 text-right">
-      <p class="text-xs tracking-widest mb-2">a video games studio from Vancouver, Canada</p>
-      <p class="text-xs tracking-widest mb-4">a collective for ambitious creative professionals</p>
+      <p class="text-xs tracking-widest mb-2">A video games studio from Vancouver, Canada</p>
+      <p class="text-xs tracking-widest mb-4">A collective for ambitious creative professionals</p>
       <p class="text-xs tracking-widest text-gray-300">ART • ENGINEERING • MAGIC</p>
       <h1 class="text-4xl font-bold mt-8">dirk</h1>
     </div>
+
+    <!-- Scroll cue -->
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-xs tracking-widest text-white/70 animate-bounce cursor-pointer">
+      <a href="#dirk4ever">EXPLORE</a>
+      <div class="mt-1 text-center">▼</div>
+    </div>
   </section>
-</body>
+
+  <!-- DIRK4EVER SECTION -->
+<section
+  id="dirk4ever"
+  class="min-h-screen bg-black text-white flex flex-col px-6 md:px-12 pt-6 border-t border-white/10 relative"
+>
+  <div class="w-full max-w-[85rem] mx-auto h-full flex flex-col">
+
+    <!-- DIRK4EVER stays flush-left -->
+    <h2
+      class="absolute top-6 left-0 text-3xl font-extrabold text-white uppercase tracking-widest px-6 md:px-12"
+    >
+      DIRK4EVER
+    </h2>
+
+    <!-- Main Header + Content shifted right -->
+    <div class="pl-24 md:pl-36 mt-16">
+      <h2 class="text-[2.4rem] md:text-[3rem] font-bold uppercase leading-snug tracking-wide mb-8">
+        DIRK WAS FOUNDED TO CREATE<br />
+        <span class="inline-block ml-14">
+          THE MOST
+          <span id="glitchWord" class="inline-block text-blue-400 font-bold">FUN</span>
+          GAMES EVER
+        </span>
+      </h2>
+
+      <!-- Compact Content Blocks -->
+      <div class="flex flex-col justify-start items-start space-y-6 pb-12">
+        <!-- FUN -->
+        <div class="flex items-start gap-5 border-t border-white/10 pt-3">
+          <div>
+            <h3 class="font-bold text-sm uppercase mb-2">01_FUN</h3>
+            <img
+              src="https://placehold.co/120x120"
+              alt="Fun placeholder"
+              class="rounded-md border border-white/10"
+            />
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed max-w-[55ch]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+
+        <!-- EXCELLENCE -->
+        <div class="flex items-start gap-5 border-t border-white/10 pt-3">
+          <div>
+            <h3 class="font-bold text-sm uppercase mb-2">02_EXCELLENCE</h3>
+            <img
+              src="https://placehold.co/120x120"
+              alt="Excellence placeholder"
+              class="rounded-md border border-white/10"
+            />
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed max-w-[55ch]">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+
+        <!-- SPEED -->
+        <div
+          class="flex items-start gap-5 border-t border-white/10 pt-3 border-b border-white/10 pb-3"
+        >
+          <div>
+            <h3 class="font-bold text-sm uppercase mb-2">03_SPEED</h3>
+            <img
+              src="https://placehold.co/120x120"
+              alt="Speed placeholder"
+              class="rounded-md border border-white/10"
+            />
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed max-w-[55ch]">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+            officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMES SECTION -->
+<!-- GAMES SECTION -->
+<section
+  id="games"
+  class="relative h-screen w-full bg-black text-white overflow-hidden flex flex-col justify-between"
+>
+  <!-- Background video or aura image -->
+  <div class="absolute inset-0">
+    <!-- Replace with your Aura background or motion graphic -->
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="/src/assets/videos/aura-bg.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <!-- Subtle overlay for readability -->
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+
+<!-- Top Header -->
+<div class="relative z-10 px-12 pt-10">
+<p class="text-xl md:text-2xl font-extrabold uppercase tracking-[0.25em] text-white/90 animate-fade-in-down">
+  GAMES
+</p>
+
+</div>
+
+
+  <!-- Center Text -->
+  <div class="relative z-10 flex flex-col justify-center items-start px-12 flex-grow">
+    <h2 class="text-[3.5rem] md:text-[4.5rem] font-extrabold uppercase tracking-tight leading-[1.1] drop-shadow-[0_0_10px_rgba(255,255,255,0.15)]">
+      GAME 1
+    </h2>
+    <p class="text-sm uppercase text-blue-400 tracking-[0.3em] mt-2">
+      IN-DEVELOPMENT
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer
+    class="relative z-10 border-t border-white/20 py-6 flex items-center justify-between px-12 bg-black/50 backdrop-blur-[3px]"
+  >
+    <p class="text-sm text-gray-300">
+      © Dirk Interactive Inc, 2025. All Rights Reserved.
+    </p>
+
+    <div class="flex gap-6 items-center">
+      <!-- Instagram -->
+      <i data-lucide="instagram" class="w-5 h-5 text-white hover:text-blue-400 transition-colors"></i>
+
+      <!-- X (formerly Twitter) -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" class="w-5 h-5 fill-white hover:fill-blue-400 transition-colors">
+        <path
+          d="M714.163 519.284 1160.89 0H1055.03L667.137 450.887 357.328 0H0L468.441 681.821 0 1226.37H105.863L515.26 744.274 842.672 1226.37H1200L714.137 519.284h.026ZM568.087 682.897l-48.032-68.694-279.69-399.201h129.296l225.659 322.306 48.032 68.694 297.348 424.669H811.404L568.087 682.871v.026Z"
+        />
+      </svg>
+
+      <!-- YouTube -->
+      <i data-lucide="youtube" class="w-5 h-5 text-white hover:text-blue-400 transition-colors"></i>
+
+      <!-- LinkedIn -->
+      <i data-lucide="linkedin" class="w-5 h-5 text-white hover:text-blue-400 transition-colors"></i>
+    </div>
+  </footer>
+</section>
+<script>
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+
+  window.addEventListener('beforeunload', function () {
+    window.scrollTo(0, 0);
+  });
+
+
+  window.addEventListener('load', function () {
+    window.scrollTo(0, 0);
+  });
+</script>
+
 
 </body>
 </html>

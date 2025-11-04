@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | Dirk Interactive</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind -->
+  <link href="../css/stylesheet.css" rel="stylesheet" />
+
+  <!-- JS -->
+  <script type="module" src="../js/main.js" defer></script>
+
+  <!-- Lucide Icons -->
+  <script type="module">
+    import { createIcons, icons } from "lucide";
+    document.addEventListener("DOMContentLoaded", () => {
+      createIcons({ icons });
+    });
+  </script>
+
+  <script>
+    // Always start at top
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.addEventListener('load', () => window.scrollTo(0, 0));
+  </script>
+</head>
+
+<body class="bg-black text-white font-['Reddit_Sans'] overflow-hidden h-screen">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 w-full z-[999] bg-black/60 backdrop-blur-sm border-b border-white/20">
+    <div class="flex items-baseline gap-12 px-16 py-6">
+      <a href="../../index.html" class="text-[2.3rem] font-extrabold leading-none tracking-tight">dirk</a>
+      <nav class="flex gap-10 text-[0.78rem] uppercase tracking-[0.25em] text-white/80">
+        <a href="../../index.html#about" class="hover:text-white transition-colors duration-200">About</a>
+        <a href="../pages/games.html" class="hover:text-white transition-colors duration-200">Games</a>
+        <a href="../pages/careers.html" class="text-white font-semibold">Careers</a>
+      </nav>
+    </div>
+    <div class="h-px w-full bg-white/25"></div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative h-screen flex flex-col justify-center items-center text-center">
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <video autoplay muted loop playsinline class="w-full h-full object-cover">
+        <source src="../assets/videos/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <div class="relative z-10 px-6">
+      <h1 class="text-[3rem] md:text-[4.5rem] font-extrabold uppercase tracking-tight leading-tight drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]">
+        Join the Team
+      </h1>
+      <p class="mt-6 text-sm md:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        We’re a creative studio pushing boundaries in art, technology, and storytelling.
+        At Dirk Interactive, we believe in collaboration, curiosity, and a little bit of magic.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/20 py-6 flex items-center justify-between px-10 bg-black/50 backdrop-blur-sm">
+    <p class="text-sm text-gray-400">© Dirk Interactive Inc, 2025. All Rights Reserved.</p>
+    <div class="flex gap-6 items-center">
+      <i data-lucide="instagram" class="w-5 h-5 text-white"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" class="w-5 h-5 fill-white">
+        <path
+          d="M714.163 519.284 1160.89 0H1055.03L667.137 450.887 357.328 0H0L468.441 681.821 0 1226.37H105.863L515.26 744.274 842.672 1226.37H1200L714.137 519.284h.026ZM568.087 682.897l-48.032-68.694-279.69-399.201h129.296l225.659 322.306 48.032 68.694 297.348 424.669H811.404L568.087 682.871v.026Z"
+        />
+      </svg>
+      <i data-lucide="youtube" class="w-5 h-5 text-white"></i>
+      <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
+    </div>
+  </footer>
+</body>
+</html>
