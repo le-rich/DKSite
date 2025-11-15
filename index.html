@@ -42,7 +42,7 @@
     <div class="absolute bottom-16 right-16 text-right">
       <p class="text-xs tracking-widest mb-2">A video games studio from Vancouver, Canada</p>
       <p class="text-xs tracking-widest mb-4">A collective for ambitious creative professionals</p>
-      <p class="text-xs tracking-widest text-gray-300">ART • ENGINEERING • MAGIC</p>
+      <p class="text-xs tracking-widest text-gray-300">ART + ENGINEERING = MAGIC</p>
       <h1 class="text-4xl font-bold mt-8">dirk</h1>
     </div>
 
@@ -203,15 +203,12 @@
     history.scrollRestoration = 'manual';
   }
 
-
-  window.addEventListener('beforeunload', function () {
+window.addEventListener('load', () => {
+  if (!window.location.hash) {
     window.scrollTo(0, 0);
-  });
+  }
+});
 
-
-  window.addEventListener('load', function () {
-    window.scrollTo(0, 0);
-  });
 </script>
 
 

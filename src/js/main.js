@@ -13,19 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let current = 0;
 
-  // Navbar fade out on scroll
+// Keep navbar always visible — CEO request
 const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
-  const heroHeight = window.innerHeight * 0.8; // 80% down hero section
-  if (window.scrollY > heroHeight) {
-    navbar.style.opacity = "0";
-    navbar.style.pointerEvents = "none";
+  // Subtle darkening for readability when scrolling
+  if (window.scrollY > 20) {
+    navbar.classList.add("bg-black/80");
   } else {
-    navbar.style.opacity = "1";
-    navbar.style.pointerEvents = "auto";
+    navbar.classList.remove("bg-black/80");
   }
 });
+
 
 
   // Basic PowerGlitch configuration

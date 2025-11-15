@@ -56,3 +56,6 @@ body {
   transform: scale(1.1);
 }
 
+html {
+  scroll-padding-top: 6rem; /* adjust to navbar height */
+}
