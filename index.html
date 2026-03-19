@@ -362,16 +362,7 @@
     align-items: center;
     gap: 12px;
   }
-  .section-label::before {
-    content: attr(data-num);
-    font-size: 10px;
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: holoShift 10s ease infinite;
-  }
+
 
   /* ── ABOUT / VALUES ── */
   #about {
@@ -915,7 +906,7 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label" data-num="00">About</div>
+  <div class="section-label">About</div>
 
   <div class="about-header">
     <div style="border-right:1px solid var(--mid);"></div>
@@ -930,19 +921,19 @@
 
   <div class="values-grid stagger">
     <div class="value-card">
-      <div class="value-num">01</div>
+      <div class="value-num">DK_01</div>
       
       <h3 class="value-title">Fun</h3>
       <p class="value-body">We are only successful if gamers love the games we make. That means creating the most fun, engaging, compelling experiences possible.</p>
     </div>
     <div class="value-card">
-      <div class="value-num">02</div>
+      <div class="value-num">DK_02</div>
       
       <h3 class="value-title">Excellence</h3>
       <p class="value-body">We are equal part craftspeople and service workers, trying to deliver the best experiences possible to our customers through consistent, transformational improvement in our own technical and artistic skill.</p>
     </div>
     <div class="value-card">
-      <div class="value-num">03</div>
+      <div class="value-num">DK_03</div>
       
       <h3 class="value-title">Speed</h3>
       <p class="value-body">Moving fast means focusing on what's important. Choosing to do what's most important means better games for our players. Speed gives the work urgency. Urgency injects our studio with life.</p>
@@ -952,7 +943,7 @@
 
 <!-- GAMES -->
 <section id="games">
-  <div class="section-label" data-num="01">Games</div>
+  <div class="section-label">Games</div>
 
   <div class="games-inner">
 
@@ -981,7 +972,7 @@
 
 <!-- CONTACT -->
 <section id="contact" style="border-bottom: 1px solid var(--mid);">
-  <div class="section-label" data-num="03">Contact</div>
+  <div class="section-label">Contact</div>
   <div style="display:grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--mid);">
     <div style="padding: 64px 48px; border-right: 1px solid var(--mid);">
       <h2 style="font-family:var(--display); font-size:clamp(28px,4vw,52px); font-weight:800; text-transform:uppercase; letter-spacing:-0.02em; line-height:1.0; margin-bottom:16px;">Get In<br><span class="holo">Touch.</span></h2>
