@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dirk Interactive</title>
+<title>Dirk Interactive — Vancouver Game Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
@@ -114,6 +114,7 @@
     isolation: isolate;
     display: flex;
     flex-direction: column;
+    touch-action: pan-y;
   }
 
   .hero-bg {
@@ -210,7 +211,10 @@
     gap: 0;
   }
   .hero-marquee { z-index: 1; }
-  .hero-marquee-hover { z-index: 2; }
+  .hero-marquee-hover {
+    z-index: 2;
+    transition: opacity 0.5s ease;
+  }
   .hero-marquee-row, .hero-marquee-hover-row {
     display: flex;
     white-space: nowrap;
@@ -284,6 +288,14 @@
     letter-spacing: 0.25em;
     text-transform: uppercase;
     animation: fadeUp 1s ease 1.2s both;
+  }
+  @media (max-width: 768px) {
+    .scroll-hint {
+      left: auto;
+      right: 20px;
+      transform: none;
+      align-items: flex-end;
+    }
   }
   .scroll-hint-line {
     width: 1px;
@@ -1039,7 +1051,7 @@
   // Apply the SVG filter to the hover layer
   hoverLayer.style.filter = 'url(#noisy-mask)';
 
-  // Hidden until mouse enters
+  // Hidden until mouse enters — CSS transition on .hero-marquee-hover handles fade
   hoverLayer.style.opacity = '0';
 
   function applySpotlight(clientX, clientY) {
