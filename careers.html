@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — Dirk Interactive</title>
+<meta name="description" content="Open roles at Dirk Interactive, a video games studio from Vancouver, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #050505;
+    --white: #f0ece3;
+    --accent: #a8c8ff;
+    --dim: #1a1a1a;
+    --mid: #2e2e2e;
+    --muted: #999;
+    --mono: 'Space Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+  @media (hover: none) { body { cursor: auto; } }
+
+  /* ── FULL-PAGE GRID ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(185,255,50,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,140,255,0.022) 1px, transparent 1px);
+    background-size: 55px 55px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    opacity: 0.045;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  @keyframes holoShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .holo {
+    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: holoShift 10s ease infinite;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 1fr auto auto auto auto;
+    align-items: center;
+    padding: 18px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(5,5,5,0.85);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  nav a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 36px;
+    transition: color 0.2s;
+  }
+  nav a:hover, nav a.active { color: var(--white); }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    background: linear-gradient(90deg, #60a5fa, #818cf8, #c084fc, #67e8f9, #60a5fa);
+    background-size: 300% 300%;
+    animation: holoShift 8s ease infinite;
+    color: #05050f;
+    border: none;
+    padding: 14px 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.15s, filter 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.15); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--mid);
+    padding: 13px 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { color: var(--white); border-color: var(--muted); }
+
+  /* ── SECTION SHELL ── */
+  main { position: relative; z-index: 1; padding-top: 57px; flex: 1; }
+  section { position: relative; border-bottom: 1px solid var(--mid); }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--mid);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .section-label .count { color: var(--white); }
+
+  .roles-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 48px 32px 8px;
+  }
+  .roles-title {
+    font-family: var(--display);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .roles-count {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── FILTERS ── */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--mid);
+    align-items: center;
+  }
+  .filters[hidden] { display: none; }
+  .filters-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 8px;
+  }
+  .chip {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--mid);
+    padding: 8px 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .chip:hover { color: var(--white); border-color: var(--muted); }
+  .chip.active { color: var(--black); background: var(--white); border-color: var(--white); }
+
+  /* ── JOB LIST ── */
+  .job-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+  }
+  .job {
+    background: var(--dim);
+    border: 1px solid var(--mid);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .job:hover {
+    border-color: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  }
+  .job.open {
+    border-color: var(--accent);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .job-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 12px 32px;
+    align-items: center;
+    padding: 28px 32px;
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .job-title {
+    font-family: var(--display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .job:hover .job-title, .job.open .job-title { color: var(--accent); }
+  .job-meta {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .job-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border: 1px solid var(--mid);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    white-space: nowrap;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+  .job:hover .job-cta { border-color: var(--accent); background: rgba(168,200,255,0.08); }
+  .job.open .job-cta { border-color: var(--accent); color: var(--accent); }
+  .job-arrow {
+    font-size: 14px;
+    transition: transform 0.25s;
+  }
+  .job:hover .job-arrow { transform: translateX(3px); }
+  .job.open .job-arrow { transform: rotate(90deg); }
+  .job-pay {
+    grid-column: 1 / -1;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,236,227,0.7);
+  }
+
+  /* ── JOB DETAIL ── */
+  .job-detail {
+    display: none;
+    border-top: 1px solid var(--mid);
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  }
+  .job.open .job-detail { display: grid; }
+  .job-detail-body {
+    padding: 48px 32px;
+    border-right: 1px solid var(--mid);
+  }
+  .job-detail-side {
+    padding: 48px 32px;
+    background: var(--dim);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: sticky;
+    top: 57px;
+    align-self: start;
+  }
+  .job-detail p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+  .job-detail p:last-child { margin-bottom: 0; }
+  .detail-heading {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 36px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: holoShift 10s ease infinite;
+  }
+  .detail-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--mid);
+  }
+  .job-detail ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .job-detail li {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+    padding-left: 18px;
+    position: relative;
+  }
+  .job-detail li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.85em;
+    width: 8px; height: 1px;
+    background: var(--accent);
+  }
+
+  .fact { display: flex; flex-direction: column; gap: 4px; }
+  .fact-k { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .fact-v { font-family: var(--display); font-size: 14px; font-weight: 600; }
+
+  .apply-block { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .apply-block .btn-ghost { text-align: center; }
+  .apply-note { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.7; }
+
+  /* ── EMPTY ── */
+  .empty {
+    grid-column: 1 / -1;
+    padding: 48px 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .empty strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .empty a { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    background: var(--black);
+    padding: 40px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer-logo { font-family: var(--display); font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
+  .footer-copy { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-top: 8px; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; grid-template-columns: 1fr auto; }
+    nav a:not(.nav-logo):not(.active) { display: none; }
+    nav a.active { margin-left: 0; }
+
+    .section-label { padding: 16px 20px; }
+    .roles-header { padding: 32px 20px 4px; flex-direction: column; align-items: flex-start; gap: 8px; }
+
+    .filters { padding: 12px 20px; }
+
+    .job-list { padding: 20px; gap: 12px; }
+    .job:hover { transform: none; }
+    .job-row { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px; }
+    .job-meta { white-space: normal; }
+    .job-cta { justify-self: start; margin-top: 4px; }
+
+    .job-detail { grid-template-columns: 1fr; }
+    .job-detail-body { border-right: none; border-bottom: 1px solid var(--mid); padding: 32px 20px; }
+    .job-detail-side { position: static; padding: 32px 20px; }
+    .btn-primary { white-space: normal; }
+
+    footer { grid-template-columns: 1fr; padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">d<span>ir</span>k</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#games">Games</a>
+  <a href="careers.html" class="active">Careers</a>
+</nav>
+
+<main>
+  <section id="careers">
+    <div class="section-label"><span>Careers</span></div>
+    <div class="roles-header">
+      <h1 class="roles-title">Open <span class="holo">Roles</span></h1>
+      <span id="openCount" class="roles-count"></span>
+    </div>
+
+    <div class="filters" id="filters" hidden>
+      <span class="filters-label">Team</span>
+    </div>
+
+    <ul class="job-list" id="jobList">
+      <li class="empty"><span>Loading roles…</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div>
+    <div class="footer-logo">D<span>irk</span> Interactive</div>
+    <div class="footer-copy">© Dirk Interactive Inc., 2026. All Rights Reserved.</div>
+  </div>
+  <div>
+    <a href="mailto:contact@dirkinteractive.com" class="btn-ghost" style="letter-spacing:0.12em;">contact@dirkinteractive.com</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const listEl = document.getElementById('jobList');
+  const filtersEl = document.getElementById('filters');
+  const countEl = document.getElementById('openCount');
+  const CONTACT = 'contact@dirkinteractive.com';
+
+  let data = null;
+  let activeTeam = 'All';
+
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function formConfigured(form) {
+    return !!(form && form.baseUrl && !form.baseUrl.includes('REPLACE_WITH') &&
+              form.positionEntryId && !form.positionEntryId.includes('REPLACE_WITH'));
+  }
+
+  // Per-job override wins; otherwise build a prefilled Google Form link; otherwise null (falls back to email).
+  function applyUrlFor(job) {
+    if (job.applyUrl) return job.applyUrl;
+    const form = data.applyForm;
+    if (!formConfigured(form)) return null;
+    const url = new URL(form.baseUrl);
+    url.searchParams.set('usp', 'pp_url');
+    url.searchParams.set(form.positionEntryId, job.title);
+    return url.toString();
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function money(n) {
+    return '$' + Math.round(n).toLocaleString('en-CA');
+  }
+  function payLine(job) {
+    const pay = job.pay;
+    if (!pay || pay.hourlyMin == null) return null;
+    const lo = Number(pay.hourlyMin);
+    const hi = pay.hourlyMax != null ? Number(pay.hourlyMax) : lo;
+    const hours = Number(pay.hoursPerYear) || 2080;
+    const cur = pay.currency || 'CAD';
+    const range = (a, b) => a === b ? money(a) : `${money(a)} – ${money(b)}`;
+    return {
+      hourly: `${cur} ${range(lo, hi)} / hour`,
+      annual: `${cur} ${range(lo * hours, hi * hours)} / year`
+    };
+  }
+
+  function list(title, items) {
+    if (!items || !items.length) return '';
+    return `<div class="detail-heading">${esc(title)}</div><ul>${items.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
+  }
+
+  function renderJob(job) {
+    const apply = applyUrlFor(job);
+    const pay = payLine(job);
+    const ext = (job.externalLinks || []).filter(l => l && l.url);
+    const facts = [
+      ['Team', job.team], ['Location', job.location],
+      ['Workplace', job.workplace], ['Type', job.type],
+      ['Posted', fmtDate(job.posted)],
+      ['Hourly', pay ? pay.hourly : null],
+      ['Yearly', pay ? pay.annual : null]
+    ].filter(([, v]) => v);
+    const mailto = `mailto:${CONTACT}?subject=${encodeURIComponent('Application: ' + job.title)}`;
+
+    return `
+      <li class="job" id="${esc(job.id)}" data-team="${esc(job.team || '')}">
+        <button class="job-row" aria-expanded="false" aria-controls="${esc(job.id)}-detail">
+          <span class="job-title">${esc(job.title)}</span>
+          <span class="job-meta">${esc([job.team, job.location, job.workplace, job.type].filter(Boolean).join(' · '))}</span>
+          <span class="job-cta"><span class="job-cta-label">View role</span><span class="job-arrow" aria-hidden="true">→</span></span>
+          ${pay ? `<span class="job-pay">${esc(pay.annual)}</span>` : ''}
+        </button>
+        <div class="job-detail" id="${esc(job.id)}-detail">
+          <div class="job-detail-body">
+            ${(job.description || []).map(p => `<p>${esc(p)}</p>`).join('')}
+            ${list("What you'll do", job.responsibilities)}
+            ${list("What we're looking for", job.requirements)}
+            ${list('Nice to have', job.niceToHave)}
+          </div>
+          <aside class="job-detail-side">
+            ${facts.map(([k, v]) => `<div class="fact"><span class="fact-k">${esc(k)}</span><span class="fact-v">${esc(v)}</span></div>`).join('')}
+            <div class="apply-block">
+              ${apply
+                ? `<a class="btn-primary" href="${esc(apply)}" target="_blank" rel="noopener">Apply for this role</a>`
+                : `<a class="btn-primary" href="${esc(mailto)}">Apply by email</a>`}
+              ${ext.map(l => `<a class="btn-ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label || 'External listing')}</a>`).join('')}
+              <span class="apply-note">Applying here or on an external board reaches the same team.</span>
+            </div>
+          </aside>
+        </div>
+      </li>`;
+  }
+
+  function visibleJobs() {
+    return (data.jobs || []).filter(j => j.open !== false && (activeTeam === 'All' || j.team === activeTeam));
+  }
+
+  function renderList() {
+    const jobs = visibleJobs();
+    if (!jobs.length) {
+      listEl.innerHTML = `<li class="empty"><strong>No open roles right now.</strong>Check back soon.</li>`;
+      return;
+    }
+    listEl.innerHTML = jobs.map(renderJob).join('');
+    listEl.querySelectorAll('.job-row').forEach(btn => {
+      btn.addEventListener('click', () => toggle(btn.parentElement));
+    });
+  }
+
+  function toggle(li, force) {
+    const open = force ?? !li.classList.contains('open');
+    li.classList.toggle('open', open);
+    li.querySelector('.job-row').setAttribute('aria-expanded', String(open));
+    if (open) history.replaceState(null, '', '#' + li.id);
+    else if (location.hash === '#' + li.id) history.replaceState(null, '', location.pathname);
+  }
+
+  function openFromHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const li = document.getElementById(id);
+    if (li && li.classList.contains('job')) {
+      toggle(li, true);
+      li.scrollIntoView({ block: 'start' });
+    }
+  }
+
+  function renderFilters() {
+    const teams = [...new Set((data.jobs || []).filter(j => j.open !== false).map(j => j.team).filter(Boolean))];
+    if (teams.length < 2) { filtersEl.hidden = true; return; }
+    filtersEl.hidden = false;
+    filtersEl.querySelectorAll('.chip').forEach(c => c.remove());
+    ['All', ...teams].forEach(t => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (t === activeTeam ? ' active' : '');
+      b.textContent = t;
+      b.addEventListener('click', () => {
+        activeTeam = t;
+        filtersEl.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.textContent === t));
+        renderList();
+      });
+      filtersEl.appendChild(b);
+    });
+  }
+
+  function render(json) {
+    data = json || { jobs: [] };
+    const n = (data.jobs || []).filter(j => j.open !== false).length;
+    countEl.innerHTML = `<span class="count">${n}</span> open ${n === 1 ? 'role' : 'roles'}`;
+    renderFilters();
+    renderList();
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+  }
+
+  // jobs.json is optional. If it is missing or unreadable the page shows the
+  // "no open roles" state rather than an error.
+  fetch('jobs.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : null)
+    .catch(() => null)
+    .then(render)
+    .catch(err => {
+      console.error('jobs.json is present but could not be rendered', err);
+      render(null);
+    });
+})();
+</script>
+</body>
+</html>
