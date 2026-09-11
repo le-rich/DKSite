@@ -1,0 +1,23 @@
+/* Shared etched-grid surface and pointer-following reflection. */
+body::after { opacity: 0.5; }
+
+.grid-sheen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: radial-gradient(ellipse 340px 280px at var(--sheen-x, -500px) var(--sheen-y, -500px), #000 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 340px 280px at var(--sheen-x, -500px) var(--sheen-y, -500px), #000 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .grid-sheen { display: block; }
+  .grid-sheen.is-active { opacity: 1; }
+}

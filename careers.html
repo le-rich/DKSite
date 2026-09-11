@@ -7,19 +7,21 @@
 <meta name="description" content="Open roles at Dirk Interactive, a video games studio from Vancouver, CA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --black: #050505;
     --white: #f0ece3;
-    --accent: #a8c8ff;
+    --accent: #c8c8c8;
     --dim: #1a1a1a;
     --mid: #2e2e2e;
     --muted: #999;
     --mono: 'Space Mono', monospace;
-    --display: 'Syne', sans-serif;
+    --copy: 'Suisse Intl', 'Suisse International', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --display: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+    --brand: 'Syne', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -69,7 +71,7 @@
     100% { background-position: 0% 50%; }
   }
   .holo {
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #b0b0b0, #d8d8d8, #eeeeee, #969696, #a0a0a0);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -91,7 +93,7 @@
     backdrop-filter: blur(12px);
   }
   .nav-logo {
-    font-family: var(--display);
+    font-family: var(--brand);
     font-size: 15px;
     font-weight: 800;
     letter-spacing: -0.02em;
@@ -112,7 +114,7 @@
 
   /* ── BUTTONS ── */
   .btn-primary {
-    background: linear-gradient(90deg, #60a5fa, #818cf8, #c084fc, #67e8f9, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #969696, #b0b0b0, #d8d8d8, #a0a0a0);
     background-size: 300% 300%;
     animation: holoShift 8s ease infinite;
     color: #05050f;
@@ -177,8 +179,8 @@
   .roles-title {
     font-family: var(--display);
     font-size: clamp(32px, 4vw, 52px);
-    font-weight: 800;
-    text-transform: uppercase;
+    font-weight: 600;
+    text-transform: none;
     letter-spacing: -0.02em;
     line-height: 1;
   }
@@ -250,7 +252,7 @@
   .job-row {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: minmax(0, 1fr) 240px auto;
     gap: 12px 32px;
     align-items: center;
     padding: 28px 32px;
@@ -266,17 +268,18 @@
     overflow-wrap: anywhere;
     font-family: var(--display);
     font-size: clamp(18px, 2vw, 24px);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.01em;
-    text-transform: uppercase;
+    text-transform: none;
     transition: color 0.2s;
   }
   .job:hover .job-title, .job.open .job-title { color: var(--accent); }
   .job-meta {
-    font-size: 10px;
+    font-family: var(--copy);
+    font-size: 14px;
     color: var(--muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    text-transform: none;
     max-width: 240px;
     white-space: normal;
   }
@@ -293,7 +296,7 @@
     white-space: nowrap;
     transition: border-color 0.2s, background 0.2s, color 0.2s;
   }
-  .job:hover .job-cta { border-color: var(--accent); background: rgba(168,200,255,0.08); }
+  .job:hover .job-cta { border-color: var(--accent); background: rgba(200,200,200,0.08); }
   .job.open .job-cta { border-color: var(--accent); color: var(--accent); }
   .job-arrow {
     font-size: 14px;
@@ -302,12 +305,18 @@
   .job:hover .job-arrow { transform: translateX(3px); }
   .job.open .job-arrow { transform: rotate(90deg); }
   .job-pay {
+    font-family: var(--copy);
     grid-column: 1 / -1;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: none;
     color: rgba(240,236,227,0.7);
+  }
+
+  .job-annual {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
   }
 
   /* ── JOB DETAIL ── */
@@ -332,9 +341,10 @@
     align-self: start;
   }
   .job-detail p {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.9;
+    font-family: var(--copy);
+    font-size: 16px;
+    color: #bdbdbd;
+    line-height: 1.75;
     margin-bottom: 16px;
   }
   .job-detail p:last-child { margin-bottom: 0; }
@@ -346,12 +356,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: holoShift 10s ease infinite;
+    color: var(--white);
   }
   .detail-heading::after {
     content: '';
@@ -366,9 +371,10 @@
     gap: 10px;
   }
   .job-detail li {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.8;
+    font-family: var(--copy);
+    font-size: 16px;
+    color: #bdbdbd;
+    line-height: 1.75;
     padding-left: 18px;
     position: relative;
   }
@@ -382,27 +388,28 @@
 
   .fact { display: flex; flex-direction: column; gap: 4px; }
   .fact-k { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
-  .fact-v { font-family: var(--display); font-size: 14px; font-weight: 600; }
+  .fact-v { font-family: var(--copy); font-size: 15px; font-weight: 500; }
 
   .apply-block { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
   .apply-block .btn-ghost { text-align: center; }
-  .apply-note { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.7; }
+  .apply-note { font-family: var(--copy); font-size: 14px; color: #bdbdbd; line-height: 1.7; }
 
   /* ── EMPTY ── */
   .empty {
+    font-family: var(--copy);
     grid-column: 1 / -1;
     padding: 48px 32px;
     text-align: center;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.9;
+    color: #bdbdbd;
+    font-size: 16px;
+    line-height: 1.75;
   }
   .empty strong {
     display: block;
     font-family: var(--display);
     font-size: 22px;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 600;
+    text-transform: none;
     color: var(--white);
     margin-bottom: 12px;
   }
@@ -419,7 +426,7 @@
     align-items: center;
     gap: 24px;
   }
-  .footer-logo { font-family: var(--display); font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
+  .footer-logo { font-family: var(--brand); font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
   .footer-copy { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-top: 8px; }
 
   /* ── MOBILE ── */
@@ -447,6 +454,8 @@
     footer { grid-template-columns: 1fr; padding: 32px 20px; }
   }
 </style>
+<link rel="stylesheet" href="grid-sheen.css">
+<script src="grid-sheen.js" defer></script>
 </head>
 <body>
 
@@ -461,7 +470,7 @@
   <section id="careers">
     <div class="section-label"><span>Careers</span></div>
     <div class="roles-header">
-      <h1 class="roles-title">Open <span class="holo">Roles</span></h1>
+      <h1 class="roles-title">Open Roles</h1>
       <span id="openCount" class="roles-count"></span>
     </div>
 
@@ -540,7 +549,9 @@
     const cur = pay.currency || 'CAD';
     const range = (a, b) => a === b ? money(a) : `${money(a)} – ${money(b)}`;
     return {
-      hourly: `${cur} ${range(lo, hi)} / hour`
+      hourly: `${cur} ${range(lo, hi)} / hour`,
+      annual: `${cur} ${range(lo * 40 * 52, hi * 40 * 52)} / year`,
+      annualBasis: '40 hours/week × 52 weeks'
     };
   }
 
@@ -558,6 +569,7 @@
       ['Workplace', job.workplace], ['Type', job.type],
       ['Posted', fmtDate(job.posted)],
       ['Hourly', pay ? pay.hourly : null],
+      ['Full-time equivalent', pay ? `${pay.annual} (${pay.annualBasis})` : null],
       ['Hours', job.hours], ['Engagement', job.engagementDates]
     ].filter(([, v]) => v);
 
@@ -567,7 +579,7 @@
           <span class="job-title">${esc(job.title)}</span>
           <span class="job-meta">${esc([job.team, job.location, job.workplace, job.type].filter(Boolean).join(' · '))}</span>
           <span class="job-cta"><span class="job-cta-label">View role</span><span class="job-arrow" aria-hidden="true">→</span></span>
-          ${pay || job.hours ? `<span class="job-pay">${esc([pay?.hourly, job.hours].filter(Boolean).join(' · '))}</span>` : ''}
+          ${pay || job.hours ? `<span class="job-pay">${esc([pay?.hourly, job.hours].filter(Boolean).join(' · '))}${pay ? `<span class="job-annual">Full-time equivalent: ${esc(pay.annual)} (${esc(pay.annualBasis)})</span>` : ''}</span>` : ''}
         </button>
         <div class="job-detail" id="${esc(job.id)}-detail">
           <div class="job-detail-body">
@@ -580,6 +592,7 @@
           </div>
           <aside class="job-detail-side">
             ${facts.map(([k, v]) => `<div class="fact"><span class="fact-k">${esc(k)}</span><span class="fact-v">${esc(v)}</span></div>`).join('')}
+            ${pay ? '<span class="apply-note">Annual equivalent is for comparison; actual contract hours and duration apply.</span>' : ''}
             <div class="apply-block">
               ${apply
                 ? `<a class="btn-primary" href="${esc(apply)}" target="_blank" rel="noopener noreferrer">Apply via Google Forms</a>`

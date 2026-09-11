@@ -10,7 +10,7 @@ Edit the catalog, verify locally, then commit and push to master for the existin
 - open: false hides a role. Also close its Google Form when intake ends; hiding a listing does not close the form.
 - title, team: role name and filter group.
 - location, workplace, type, posted: optional facts. Dates use YYYY-MM-DD.
-- pay: optional object with currency, hourlyMin and hourlyMax. Displayed hourly, never annualized.
+- pay: optional object with currency, hourlyMin and hourlyMax. Displayed hourly, with a clearly labeled full-time annual equivalent calculated as hourly rate × 40 hours/week × 52 weeks. This is a comparison figure, not promised contract earnings. Roles without hourly pay do not show an annual equivalent.
 - hours, engagementDates: optional sidebar facts.
 - description: array of paragraphs.
 - responsibilities, requirements, niceToHave, engagement, application: arrays of section items.

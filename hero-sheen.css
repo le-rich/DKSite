@@ -1,0 +1,17 @@
+/* Metallic hero reflection and click-and-hold interaction. */
+.hero-marquee-hover { filter: none; opacity: 0; transition: opacity 600ms ease; }
+.hero-marquee-hover-row span,
+.hero-marquee-hover-row:nth-child(2) span { color: rgba(220,220,220,0.48); }
+#hero .hero-bg { filter: grayscale(1); }
+#hero .hero-marquee-row { cursor: crosshair; }
+#hero.is-holding .hero-marquee-row { cursor: grabbing; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-row span, .hero-marquee-hover-row span { animation: none; }
+}
+
+/* Heat shimmer belongs only to the focused reflection, not the tap waves. */
+.hero-focus { filter: url(#noisy-mask); }
+#hero { touch-action: pan-y pinch-zoom; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-focus { filter: none; }
+}

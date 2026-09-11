@@ -6,23 +6,25 @@
 <title>Dirk Interactive</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --black: #050505;
     --white: #f0ece3;
-    --accent: #a8c8ff;
-    --holo-1: #60a5fa;
-    --holo-2: #c084fc;
-    --holo-3: #67e8f9;
-    --holo-4: #a5f3fc;
+    --accent: #c8c8c8;
+    --holo-1: #a0a0a0;
+    --holo-2: #b0b0b0;
+    --holo-3: #d8d8d8;
+    --holo-4: #eeeeee;
     --dim: #1a1a1a;
     --mid: #2e2e2e;
     --muted: #999;
     --mono: 'Space Mono', monospace;
-    --display: 'Syne', sans-serif;
+    --copy: 'Suisse Intl', 'Suisse International', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --display: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+    --brand: 'Syne', sans-serif;
     --grid: 1fr 1fr 1fr 1fr 1fr 1fr;
     --cols: 6;
   }
@@ -82,7 +84,7 @@
   }
 
   .nav-logo {
-    font-family: var(--display);
+    font-family: var(--brand);
     font-size: 15px;
     font-weight: 800;
     letter-spacing: -0.02em;
@@ -226,7 +228,7 @@
     cursor: default;
   }
   .hero-marquee-row span {
-    font-family: var(--display);
+    font-family: var(--brand);
     font-size: clamp(80px, 14vw, 180px);
     font-weight: 800;
     text-transform: uppercase;
@@ -252,7 +254,7 @@
   }
 
   .hero-marquee-hover-row span {
-    font-family: var(--display);
+    font-family: var(--brand);
     font-size: clamp(80px, 14vw, 180px);
     font-weight: 800;
     text-transform: uppercase;
@@ -310,7 +312,7 @@
   }
 
   .holo {
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #b0b0b0, #d8d8d8, #eeeeee, #969696, #a0a0a0);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -322,7 +324,7 @@
   }
 
   .btn-primary {
-    background: linear-gradient(90deg, #60a5fa, #818cf8, #c084fc, #67e8f9, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #969696, #b0b0b0, #d8d8d8, #a0a0a0);
     background-size: 300% 300%;
     animation: holoShift 8s ease infinite;
     color: #05050f;
@@ -396,15 +398,15 @@
   .about-headline {
     font-family: var(--display);
     font-size: clamp(28px, 4vw, 52px);
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 600;
+    text-transform: none;
     letter-spacing: -0.02em;
     line-height: 1.05;
     margin-bottom: 20px;
   }
   .about-headline em {
     font-style: normal;
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #b0b0b0, #d8d8d8, #eeeeee, #969696, #a0a0a0);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -422,7 +424,7 @@
     font-style: normal;
     display: inline-block;
     vertical-align: baseline;
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #b0b0b0, #d8d8d8, #eeeeee, #969696, #a0a0a0);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -436,10 +438,11 @@
   }
 
   .about-blurb {
+    font-family: var(--copy);
     margin-top: 28px;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.9;
+    font-size: 16px;
+    color: #bdbdbd;
+    line-height: 1.75;
     letter-spacing: 0.01em;
   }
 
@@ -487,7 +490,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #b0b0b0, #d8d8d8, #eeeeee, #969696, #a0a0a0);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -507,16 +510,17 @@
   .value-title {
     font-family: var(--display);
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.01em;
-    text-transform: uppercase;
+    text-transform: none;
     margin-bottom: 16px;
   }
 
   .value-body {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.85;
+    font-family: var(--copy);
+    font-size: 16px;
+    color: #bdbdbd;
+    line-height: 1.75;
   }
 
   /* ── GAMES ── */
@@ -546,9 +550,7 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 80% at 55% 40%, rgba(120, 80, 220, 0.4) 0%, transparent 65%),
-      radial-gradient(ellipse 50% 60% at 30% 70%, rgba(0, 200, 160, 0.25) 0%, transparent 55%),
-      linear-gradient(135deg, #0d0d1a 0%, #0a1a14 100%);
+      radial-gradient(ellipse 65% 110% at 70% 35%, #292929 0%, #222222 30%, #191919 62%, #111111 100%);
     transition: transform 0.6s ease;
   }
   .game-card:hover .game-bg-placeholder { transform: scale(1.03); }
@@ -566,30 +568,37 @@
     font-family: var(--mono);
   }
 
-  /* Fake type art — mimics the Aa→ë) from mockup */
+  /* Two identical type-art groups form one seamless scrolling loop. */
   .game-type-art {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 10%;
     z-index: 1;
     overflow: hidden;
   }
+  .game-type-track {
+    display: flex;
+    width: max-content;
+    flex-shrink: 0;
+    animation: typeSlide 36s linear infinite;
+  }
   .game-type-art span {
-    font-family: var(--display);
+    flex: 0 0 auto;
+    min-width: 100vw;
+    padding-right: clamp(48px, 8vw, 120px);
+    font-family: var(--brand);
     font-size: clamp(80px, 16vw, 200px);
     font-weight: 800;
     color: rgba(255,255,255,0.07);
     letter-spacing: -0.04em;
     white-space: nowrap;
     user-select: none;
-    animation: typeSlide 18s linear infinite;
   }
   @keyframes typeSlide {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(-35%); }
+    100% { transform: translateX(-50%); }
   }
 
   .game-overlay {
@@ -612,7 +621,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(90deg, #60a5fa, #c084fc, #67e8f9, #a5f3fc, #818cf8, #60a5fa);
+    background: linear-gradient(90deg, #a0a0a0, #b0b0b0, #d8d8d8, #eeeeee, #969696, #a0a0a0);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -622,25 +631,26 @@
   .game-meta::before {
     content: '';
     width: 20px; height: 1px;
-    background: #60a5fa;
+    background: #a0a0a0;
     flex-shrink: 0;
   }
 
   .game-title {
     font-family: var(--display);
     font-size: clamp(32px, 5vw, 64px);
-    font-weight: 800;
-    text-transform: uppercase;
+    font-weight: 600;
+    text-transform: none;
     letter-spacing: -0.03em;
     line-height: 0.95;
     margin-bottom: 16px;
   }
 
   .game-desc {
-    font-size: 12px;
-    color: rgba(240,236,227,0.5);
+    font-family: var(--copy);
+    font-size: 16px;
+    color: #bdbdbd;
     max-width: 420px;
-    line-height: 1.8;
+    line-height: 1.75;
   }
 
   .game-cta {
@@ -680,17 +690,18 @@
   .careers-headline {
     font-family: var(--display);
     font-size: clamp(32px, 4vw, 56px);
-    font-weight: 800;
-    text-transform: uppercase;
+    font-weight: 600;
+    text-transform: none;
     letter-spacing: -0.02em;
     line-height: 1.0;
     margin-bottom: 24px;
   }
 
   .careers-body {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.9;
+    font-family: var(--copy);
+    font-size: 16px;
+    color: #bdbdbd;
+    line-height: 1.75;
     margin-bottom: 40px;
     max-width: 380px;
   }
@@ -737,7 +748,7 @@
     gap: 8px;
   }
   .footer-logo {
-    font-family: var(--display);
+    font-family: var(--brand);
     font-size: 22px;
     font-weight: 800;
     text-transform: uppercase;
@@ -828,7 +839,7 @@
     .about-header { grid-template-columns: 1fr; }
     .about-headline-wrap { grid-column: 1/-1; border: none; padding: 48px 20px; }
     .about-headline { font-size: clamp(24px, 7vw, 40px); }
-    .about-blurb { font-size: 12px; }
+    .about-blurb { font-size: 16px; }
     .values-grid { grid-template-columns: 1fr; }
     .value-card { border-right: none; border-bottom: 1px solid var(--mid); }
 
@@ -862,6 +873,11 @@
     #contact > div > div { padding: 48px 32px !important; }
   }
 </style>
+<!-- Shared grid reflection and hero interaction. -->
+<link rel="stylesheet" href="grid-sheen.css">
+<script src="grid-sheen.js" defer></script>
+<link rel="stylesheet" href="hero-sheen.css">
+<script src="hero-sheen.js" defer></script>
 </head>
 <body>
 
@@ -962,8 +978,11 @@
     <!-- Game 1 -->
     <div class="game-card reveal">
       <div class="game-bg-placeholder"></div>
-      <div class="game-type-art">
-        <span>Aa→ë) Pq∆ Rr↑ Oo⊕ Cc∞</span>
+      <div class="game-type-art" aria-hidden="true">
+        <div class="game-type-track">
+          <span>Aa→ë) Pq∆ Rr↑ Oo⊕ Cc∞</span>
+          <span>Aa→ë) Pq∆ Rr↑ Oo⊕ Cc∞</span>
+        </div>
       </div>
       <div class="game-overlay">
         <div>
@@ -987,7 +1006,7 @@
   <div class="section-label">Contact</div>
   <div style="display:grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--mid);">
     <div style="padding: 64px 48px; border-right: 1px solid var(--mid);">
-      <h2 style="font-family:var(--display); font-size:clamp(28px,4vw,52px); font-weight:800; text-transform:uppercase; letter-spacing:-0.02em; line-height:1.0; margin-bottom:16px;">Get In<br><span class="holo">Touch.</span></h2>
+      <h2 style="font-family:var(--display); font-size:clamp(28px,4vw,52px); font-weight:600; text-transform:none; letter-spacing:-0.02em; line-height:1.0; margin-bottom:16px;">Get In<br>Touch.</h2>
     </div>
     <div style="padding: 64px 48px; display:flex; flex-direction:column; justify-content:center; gap:16px;">
       <a href="mailto:contact@dirkinteractive.com" class="btn-ghost" style="display:inline-block; letter-spacing:0.12em;">contact@dirkinteractive.com</a>
@@ -1022,286 +1041,12 @@
   <defs>
     <filter id="noisy-mask" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
       <feTurbulence id="noiseTurb" type="fractalNoise" baseFrequency="0.012 0.008" numOctaves="3" seed="2" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="28" xChannelSelector="R" yChannelSelector="G"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
   </defs>
 </svg>
 
 <script>
-  // Mouse spotlight on hero marquee — radial circle mask
-  const hero = document.getElementById('hero');
-  const hoverLayer = document.getElementById('marqueeHover');
-
-  // Animate the turbulence baseFrequency smoothly — seed stays fixed so noise never jumps.
-  // Both axes use the same period (2π / rate) so the cycle repeats seamlessly forever.
-  const turb = document.getElementById('noiseTurb');
-  const NOISE_RATE_X = 0.00038; // radians per ms — period ≈ 16.5 s
-  const NOISE_RATE_Y = 0.00026; // slightly different period for organic feel ≈ 24 s
-  let noiseStart = null;
-  function animateNoise(ts) {
-    if (!noiseStart) noiseStart = ts;
-    const t = ts - noiseStart;
-    const fx = (0.010 + Math.sin(t * NOISE_RATE_X) * 0.002).toFixed(5);
-    const fy = (0.007 + Math.cos(t * NOISE_RATE_Y) * 0.0015).toFixed(5);
-    turb.setAttribute('baseFrequency', fx + ' ' + fy);
-    requestAnimationFrame(animateNoise);
-  }
-  requestAnimationFrame(animateNoise);
-
-  // Apply the SVG filter to the hover layer
-  hoverLayer.style.filter = 'url(#noisy-mask)';
-
-  // Hidden until mouse enters — CSS transition on .hero-marquee-hover handles fade
-  hoverLayer.style.opacity = '0';
-
-  function applySpotlight(clientX, clientY) {
-    const rect = hero.getBoundingClientRect();
-    const offsetX = rect.width * 0.2;
-    const offsetY = rect.height * 0.2;
-    const x = (clientX - rect.left + offsetX) / (rect.width * 1.4) * 100;
-    const y = (clientY - rect.top  + offsetY) / (rect.height * 1.4) * 100;
-    const mask = `radial-gradient(ellipse 360px 150px at ${x.toFixed(2)}% ${y.toFixed(2)}%, black 0%, black 25%, rgba(0,0,0,0.35) 55%, transparent 100%)`;
-    hoverLayer.style.webkitMaskImage = mask;
-    hoverLayer.style.maskImage = mask;
-    hoverLayer.style.opacity = '1';
-  }
-
-  function clearSpotlight() {
-    hoverLayer.style.opacity = '0';
-  }
-
-  hero.addEventListener('mousemove', (e) => applySpotlight(e.clientX, e.clientY));
-  hero.addEventListener('mouseleave', clearSpotlight);
-
-  hero.addEventListener('touchstart', (e) => {
-    const t = e.touches[0];
-    applySpotlight(t.clientX, t.clientY);
-  }, { passive: true });
-
-  hero.addEventListener('touchmove', (e) => {
-    const t = e.touches[0];
-    applySpotlight(t.clientX, t.clientY);
-  }, { passive: true });
-
-  hero.addEventListener('touchend', clearSpotlight);
-
-  // ── ROW ACCELERATION ──
-  (function() {
-    const BASE_SPEED = 50 / 55;   // %/s
-    const MAX_SPEED  = BASE_SPEED * 6.85;
-    const EASE_IN  = 6.0; // fast snap when hovering
-    const EASE_OUT = 1.6; // slow release when leaving
-
-    const rows     = Array.from(document.querySelectorAll('.hero-marquee-row'));
-    const hoverRows = Array.from(document.querySelectorAll('.hero-marquee-hover-row'));
-
-    // Remove CSS animations — JS takes over
-    [...rows, ...hoverRows].forEach(row => {
-      row.querySelectorAll('span').forEach(span => {
-        span.style.animation = 'none';
-        span.style.willChange = 'transform';
-      });
-    });
-
-    const state = rows.map((row, i) => ({
-      row,
-      isEven: (i + 1) % 2 === 0,
-      pos: 0,
-      speed: BASE_SPEED,
-      targetSpeed: BASE_SPEED,
-      following: false,
-      followPos: 0,
-      arriveTarget: null, // locked when row is first entered, held until lock
-    }));
-
-    let hoveredIdx = -1;
-    let mouseXPx   = 0;   // mouse X in pixels relative to hero left
-    let prevMouseX = 0;
-
-
-
-    // Coordinate system: everything in pixels.
-    // translateX(p%) on a span moves it by p/100 * span.getBoundingClientRect().width px.
-    // We re-measure each tick via getBoundingClientRect so it is always window-accurate.
-
-    let spanPxWidth = 1;
-    function measureSpan() {
-      const span = rows[0] && rows[0].querySelector('span');
-      if (!span) return;
-      const w = span.getBoundingClientRect().width;
-      if (w > 0) spanPxWidth = w;
-    }
-
-    // pos-units (%) → pixels
-    function posToPixels(p) { return p * spanPxWidth / 100; }
-    // pixels → pos-units (%)
-    function pixelsToPos(px) { return px / spanPxWidth * 100; }
-
-    // Mouse delta px → pos delta for this row's scroll direction.
-    //   odd  rows: translateX = -pos → moving right = pos decreases
-    //   even rows: translateX = pos-50 → moving right = pos increases
-    function mouseDeltaToPosDelta(s, dxPx) {
-      const dp = pixelsToPos(dxPx);
-      return s.isEven ? dp : -dp;
-    }
-
-    // Compute the pos value that centres a DIRK under the mouse,
-    // only choosing a slot reachable by travelling in the row's natural direction.
-    //
-    // The span's left edge (before transform) is at heroLeft - heroWidth*0.2
-    // (because the marquee container has inset:-20%).
-    // Screen position of DIRK slot n's centre =
-    //   spanLeft + translateX_px + (n + 0.5) * unitPx
-    // where spanLeft = heroRect.left - heroWidth*0.2  (measured at call time)
-    // and   translateX_px = (isEven ? pos-50 : -pos) / 100 * W
-    //
-    // We want that screen position = heroRect.left + mxPx  (mouse in hero-px)
-    // → translateX_px + (n+0.5)*unitPx = mxPx + heroWidth*0.2
-    // → txTarget = mxPx + heroWidth*0.2 - (n+0.5)*unitPx
-    // → pos = isEven ? txTarget/W*100 + 50 : -txTarget/W*100
-    //
-    // Direction constraint: odd rows travel left (pos increases each frame).
-    //   To snap by travelling forward, pick the smallest n such that targetPos > s.pos.
-    //   Even rows travel right (pos decreases each frame), pick largest n with targetPos < s.pos.
-
-    function targetPosForMouse(s, mxPx) {
-      const heroRect = hero.getBoundingClientRect();
-      const W        = spanPxWidth;
-      const unitPx   = W / 8;
-      // Offset: mouse in span-local px coords (accounting for inset:-20%)
-      const mxSpan   = mxPx + heroRect.width * 0.2;
-
-      // Current translateX in px
-      const txCurPx  = (s.isEven ? s.pos - 50 : -s.pos) / 100 * W;
-
-      // Find n such that centre of slot n is closest to mouse
-      // centre_n = txCurPx + (n+0.5)*unitPx  →  n = (mxSpan - txCurPx)/unitPx - 0.5
-      const nRaw = (mxSpan - txCurPx) / unitPx - 0.5;
-
-      // Direction constraint:
-      // odd rows (isEven=false): pos increases → visual moves left → we want the next
-      //   slot coming from the right, i.e. nRaw rounded UP (ceil) so we don't go backward
-      // even rows (isEven=true): pos decreases → visual moves right → round DOWN (floor)
-      const n = Math.round(nRaw);
-
-      const txTarget = mxSpan - (n + 0.42) * unitPx;
-      let tgt = s.isEven
-        ? (txTarget / W * 100) + 50
-        : -(txTarget / W * 100);
-      tgt = ((tgt % 50) + 50) % 50;
-
-      return tgt;
-    }
-
-    function updateRowHover(clientX, clientY) {
-      const heroRect = hero.getBoundingClientRect();
-      const mouseY   = clientY - heroRect.top;
-      mouseXPx = clientX - heroRect.left;
-
-      // Find the closest row to the mouse — always one row active within the hero
-      let found = -1;
-      let minDist = Infinity;
-      rows.forEach((row, i) => {
-        const r = row.getBoundingClientRect();
-        const centre = (r.top + r.bottom) / 2 - heroRect.top;
-        const dist = Math.abs(mouseY - centre);
-        if (dist < minDist) { minDist = dist; found = i; }
-      });
-      // Only track if mouse is actually inside the hero
-      if (mouseY < 0 || mouseY > heroRect.height) found = -1;
-
-      if (found !== hoveredIdx) {
-        if (hoveredIdx !== -1) {
-          state[hoveredIdx].following   = false;
-          state[hoveredIdx].targetSpeed = BASE_SPEED;
-        }
-        hoveredIdx = found;
-        if (found !== -1) {
-          state[found].following    = false;
-          state[found].targetSpeed  = MAX_SPEED;
-          state[found].arriveTarget = null; // will be computed on first tick
-        }
-      }
-    }
-
-    function resetRowHover() {
-      if (hoveredIdx !== -1) {
-        state[hoveredIdx].following   = false;
-        state[hoveredIdx].targetSpeed = BASE_SPEED;
-      }
-      hoveredIdx = -1;
-      state.forEach(s => { s.targetSpeed = BASE_SPEED; s.following = false; s.arriveTarget = null; });
-    }
-
-    hero.addEventListener('mousemove', (e) => updateRowHover(e.clientX, e.clientY));
-    hero.addEventListener('mouseleave', resetRowHover);
-
-    hero.addEventListener('touchstart', (e) => updateRowHover(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
-    hero.addEventListener('touchmove',  (e) => updateRowHover(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
-    hero.addEventListener('touchend', resetRowHover);
-
-    let last = null;
-    function tick(ts) {
-      if (!last) last = ts;
-      measureSpan();
-      const dt = Math.min((ts - last) / 1000, 0.05);
-      last = ts;
-
-      state.forEach((s, idx) => {
-        if (idx === hoveredIdx && !s.following) {
-          // ── Arrive phase ──
-          // Recompute target every tick so we always lock to wherever the mouse
-          // actually is, not where it was on entry.
-          s.arriveTarget = targetPosForMouse(s, mouseXPx);
-          const tgt  = s.arriveTarget;
-          let delta  = ((tgt - s.pos + 25) % 50) - 25;
-          // Fast ease: close ~35% of gap per frame at 60fps
-          s.pos = ((s.pos + delta * Math.min(18 * dt, 1)) % 50 + 50) % 50;
-          s.speed = 0;
-
-          // Lock once within 1px of target
-          const tgtPx = (s.isEven ? tgt - 50 : -tgt) / 100 * spanPxWidth;
-          const curPx = (s.isEven ? s.pos - 50 : -s.pos) / 100 * spanPxWidth;
-          if (Math.abs(tgtPx - curPx) < 1) {
-            s.following    = true;
-            s.speed        = 0;
-            s.targetSpeed  = 0;
-            s.arriveTarget = null;
-          }
-        } else if (idx === hoveredIdx && s.following) {
-          // ── Follow mode — 1:1 pixel tracking ──
-          const dxPx = mouseXPx - prevMouseX;
-          const dPos = mouseDeltaToPosDelta(s, dxPx);
-          s.pos = ((s.pos + dPos) % 50 + 50) % 50;
-          s.speed = 0;
-        } else {
-          // ── Normal scroll ──
-          const ease = s.speed < s.targetSpeed ? EASE_IN : EASE_OUT;
-          s.speed += (s.targetSpeed - s.speed) * Math.min(ease * dt, 1);
-          s.pos = ((s.pos + s.speed * dt) % 50 + 50) % 50;
-        }
-
-        const t = s.isEven ? s.pos - 50 : -s.pos;
-
-        const val = `translateX(${t.toFixed(4)}%)`;
-        s.row.querySelectorAll('span').forEach(span => {
-          span.style.transform = val;
-        });
-        if (hoverRows[idx]) {
-          hoverRows[idx].querySelectorAll('span').forEach(span => {
-            span.style.transform = val;
-          });
-        }
-      });
-
-      // Sync prevMouseX each tick so delta is zero when mouse is still
-      prevMouseX = mouseXPx;
-      requestAnimationFrame(tick);
-    }
-
-    requestAnimationFrame(tick);
-  })();
-
   // Scramble text effect on about headline
   (function() {
     const el = document.getElementById('scrambleWord');
