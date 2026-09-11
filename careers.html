@@ -231,6 +231,7 @@
     padding: 32px;
   }
   .job {
+    scroll-margin-top: 80px;
     background: var(--dim);
     border: 1px solid var(--mid);
     transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -261,6 +262,8 @@
     cursor: pointer;
   }
   .job-title {
+    min-width: 0;
+    overflow-wrap: anywhere;
     font-family: var(--display);
     font-size: clamp(18px, 2vw, 24px);
     font-weight: 700;
@@ -274,7 +277,8 @@
     color: var(--muted);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    white-space: nowrap;
+    max-width: 240px;
+    white-space: normal;
   }
   .job-cta {
     display: inline-flex;
@@ -487,24 +491,31 @@
   const listEl = document.getElementById('jobList');
   const filtersEl = document.getElementById('filters');
   const countEl = document.getElementById('openCount');
-  const CONTACT = 'contact@dirkinteractive.com';
 
   let data = null;
   let activeTeam = 'All';
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-  function formConfigured(form) {
-    return !!(form && form.baseUrl && !form.baseUrl.includes('REPLACE_WITH') &&
-              form.positionEntryId && !form.positionEntryId.includes('REPLACE_WITH'));
+  function safeUrl(value, formsOnly = false) {
+    try {
+      const url = new URL(value);
+      if (url.protocol !== 'https:' || url.username || url.password) return null;
+      if (formsOnly && !(
+        (url.hostname === 'forms.gle' && /^\/[A-Za-z0-9]+$/.test(url.pathname)) ||
+        (url.hostname === 'docs.google.com' && /^\/forms\/d\/(?:e\/)?[A-Za-z0-9_-]+\/viewform$/.test(url.pathname))
+      )) return null;
+      return url.toString();
+    } catch { return null; }
   }
 
-  // Per-job override wins; otherwise build a prefilled Google Form link; otherwise null (falls back to email).
+  // Only public Google Forms responder links are accepted for applications.
   function applyUrlFor(job) {
-    if (job.applyUrl) return job.applyUrl;
+    if (job.applyUrl) return safeUrl(job.applyUrl, true);
     const form = data.applyForm;
-    if (!formConfigured(form)) return null;
-    const url = new URL(form.baseUrl);
+    const base = safeUrl(form?.baseUrl, true);
+    if (!base || !/^entry\.\d+$/.test(form?.positionEntryId || '')) return null;
+    const url = new URL(base);
     url.searchParams.set('usp', 'pp_url');
     url.searchParams.set(form.positionEntryId, job.title);
     return url.toString();
@@ -525,12 +536,11 @@
     if (!pay || pay.hourlyMin == null) return null;
     const lo = Number(pay.hourlyMin);
     const hi = pay.hourlyMax != null ? Number(pay.hourlyMax) : lo;
-    const hours = Number(pay.hoursPerYear) || 2080;
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo < 0 || hi < lo) return null;
     const cur = pay.currency || 'CAD';
     const range = (a, b) => a === b ? money(a) : `${money(a)} – ${money(b)}`;
     return {
-      hourly: `${cur} ${range(lo, hi)} / hour`,
-      annual: `${cur} ${range(lo * hours, hi * hours)} / year`
+      hourly: `${cur} ${range(lo, hi)} / hour`
     };
   }
 
@@ -542,15 +552,14 @@
   function renderJob(job) {
     const apply = applyUrlFor(job);
     const pay = payLine(job);
-    const ext = (job.externalLinks || []).filter(l => l && l.url);
+    const ext = (job.externalLinks || []).filter(l => l && safeUrl(l.url));
     const facts = [
       ['Team', job.team], ['Location', job.location],
       ['Workplace', job.workplace], ['Type', job.type],
       ['Posted', fmtDate(job.posted)],
       ['Hourly', pay ? pay.hourly : null],
-      ['Yearly', pay ? pay.annual : null]
+      ['Hours', job.hours], ['Engagement', job.engagementDates]
     ].filter(([, v]) => v);
-    const mailto = `mailto:${CONTACT}?subject=${encodeURIComponent('Application: ' + job.title)}`;
 
     return `
       <li class="job" id="${esc(job.id)}" data-team="${esc(job.team || '')}">
@@ -558,7 +567,7 @@
           <span class="job-title">${esc(job.title)}</span>
           <span class="job-meta">${esc([job.team, job.location, job.workplace, job.type].filter(Boolean).join(' · '))}</span>
           <span class="job-cta"><span class="job-cta-label">View role</span><span class="job-arrow" aria-hidden="true">→</span></span>
-          ${pay ? `<span class="job-pay">${esc(pay.annual)}</span>` : ''}
+          ${pay || job.hours ? `<span class="job-pay">${esc([pay?.hourly, job.hours].filter(Boolean).join(' · '))}</span>` : ''}
         </button>
         <div class="job-detail" id="${esc(job.id)}-detail">
           <div class="job-detail-body">
@@ -566,15 +575,17 @@
             ${list("What you'll do", job.responsibilities)}
             ${list("What we're looking for", job.requirements)}
             ${list('Nice to have', job.niceToHave)}
+            ${list('Engagement', job.engagement)}
+            ${list('Application', job.application)}
           </div>
           <aside class="job-detail-side">
             ${facts.map(([k, v]) => `<div class="fact"><span class="fact-k">${esc(k)}</span><span class="fact-v">${esc(v)}</span></div>`).join('')}
             <div class="apply-block">
               ${apply
-                ? `<a class="btn-primary" href="${esc(apply)}" target="_blank" rel="noopener">Apply for this role</a>`
-                : `<a class="btn-primary" href="${esc(mailto)}">Apply by email</a>`}
+                ? `<a class="btn-primary" href="${esc(apply)}" target="_blank" rel="noopener noreferrer">Apply via Google Forms</a>`
+                : `<span class="apply-note">Applications opening soon.</span>`}
               ${ext.map(l => `<a class="btn-ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label || 'External listing')}</a>`).join('')}
-              <span class="apply-note">Applying here or on an external board reaches the same team.</span>
+              ${apply ? '<span class="apply-note">Opens Google Forms in a new tab. A Google sign-in is required for the résumé upload. Application details are collected in Google Forms, not on this website. Please share only work you are authorized to disclose.</span>' : ''}
             </div>
           </aside>
         </div>
@@ -606,7 +617,8 @@
   }
 
   function openFromHash() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     if (!id) return;
     const li = document.getElementById(id);
     if (li && li.classList.contains('job')) {
@@ -643,15 +655,19 @@
     window.addEventListener('hashchange', openFromHash);
   }
 
-  // jobs.json is optional. If it is missing or unreadable the page shows the
-  // "no open roles" state rather than an error.
+  // A missing catalog is an empty state; other failures should be visible.
   fetch('jobs.json', { cache: 'no-cache' })
-    .then(r => r.ok ? r.json() : null)
-    .catch(() => null)
+    .then(r => {
+      if (r.status === 404) return null;
+      if (!r.ok) throw new Error('Unable to load roles');
+      return r.json();
+    })
     .then(render)
     .catch(err => {
       console.error('jobs.json is present but could not be rendered', err);
-      render(null);
+      countEl.textContent = '';
+      filtersEl.hidden = true;
+      listEl.innerHTML = '<li class="empty"><strong>Unable to load roles.</strong>Please refresh this page to try again.</li>';
     });
 })();
 </script>
