@@ -15,4 +15,4 @@ The forms collect contact details, a required portfolio, resume upload, availabi
 
 Keep response summaries off. Restrict form-editor and response Sheet access to hiring reviewers and manage those permissions separately. Never publish a response Sheet or put applicant data in this repository. Closing a website listing does not close its form.
 
-The three artist forms confirm receipt and say shortlisted candidates will be contacted. Their availability question references mid-December 2026. Update it if the schedule changes. Commission pricing requested in the public postings can be supplied in the optional final notes field; the forms currently have no separate pricing question.
+The three artist forms confirm receipt and say shortlisted candidates will be contacted. All four forms ask for earliest start date, available hours per week, and availability over the next 3–4 months. Update it if the schedule changes. Commission pricing requested in the public postings can be supplied in the optional final notes field; the forms currently have no separate pricing question.
