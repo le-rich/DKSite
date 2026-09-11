@@ -29,7 +29,7 @@
   function animate(enter, done) {
     busy = true;
     root.classList.add('page-transitioning');
-    const duration = enter ? 850 : 520;
+    const duration = enter ? 400 : 250;
     const start = performance.now();
     root.style.setProperty('--page-veil', enter ? '1' : '0');
     function draw(now) {
@@ -69,7 +69,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     if (arriving && !reduced.matches) {
       // Keep the veil in place while the first layout and font metrics settle.
-      Promise.race([document.fonts.ready, new Promise(resolve => setTimeout(resolve, 160))])
+      Promise.race([document.fonts.ready, new Promise(resolve => setTimeout(resolve, 80))])
         .then(() => requestAnimationFrame(() => requestAnimationFrame(() => animate(true))));
     } else reset();
   }, { once: true });
