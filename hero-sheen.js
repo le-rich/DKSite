@@ -155,7 +155,7 @@
       const reach = Math.hypot(Math.max(wave.x, rect.width - wave.x), Math.max(wave.y, rect.height - wave.y));
       const band = 190 + t * 190;
       const r = t * (reach * 1.2 + 450);
-      const alpha = Math.sin(Math.PI * t) * (1 - t * 0.5) * 0.60 / Math.sqrt(waves.length);
+      const alpha = Math.sin(Math.PI * t) * (1 - t * 0.5) * 0.32 / Math.sqrt(waves.length);
       // A smoothly changing, irregular light front instead of a perfect circle.
       // Distort only the illumination mask, keeping the underlying glyphs crisp.
       const phase = wave.time * 0.007;
