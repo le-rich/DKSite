@@ -2,7 +2,7 @@
   "jobs": [
     {
       "id": "art-director",
-      "open": true,
+      "open": false,
       "title": "Art Director - Unreal Engine 5",
       "team": "Art",
       "workplace": "Remote",
@@ -88,7 +88,7 @@
     },
     {
       "id": "concept-artist",
-      "open": true,
+      "open": false,
       "title": "Concept Artist - Games and Visual Development",
       "team": "Art",
       "workplace": "Remote",
@@ -151,7 +151,7 @@
     },
     {
       "id": "3d-generalist",
-      "open": true,
+      "open": false,
       "title": "3D Generalist Artist - Unreal Engine 5",
       "team": "Art",
       "workplace": "Remote",
@@ -217,7 +217,7 @@
     },
     {
       "id": "3d-character-artist",
-      "open": true,
+      "open": false,
       "title": "3D Character Artist - Unreal Engine 5",
       "team": "Art",
       "workplace": "Remote",

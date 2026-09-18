@@ -621,7 +621,7 @@
   function renderList() {
     const jobs = visibleJobs();
     if (!jobs.length) {
-      listEl.innerHTML = `<li class="empty"><strong>No open roles right now.</strong>Check back soon.</li>`;
+      listEl.innerHTML = `<li class="empty"><strong>No open roles right now.</strong>Applications are currently closed. Thank you for your interest in Dirk Interactive.</li>`;
       return;
     }
     listEl.innerHTML = jobs.map(renderJob).join('');

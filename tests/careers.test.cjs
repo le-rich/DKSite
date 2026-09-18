@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const html = fs.readFileSync('careers.html', 'utf8');
 const source = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const catalog = JSON.parse(fs.readFileSync('jobs.json', 'utf8'));
+const openCatalog = {...catalog, jobs: catalog.jobs.map(job => ({...job, open: true}))};
 
 async function run(response, hash = '') {
   const elements = Object.fromEntries(['jobList','filters','openCount'].map(id => [id, {
@@ -25,7 +26,7 @@ test('four roles route to four distinct responder forms with labeled full-time a
   assert.equal(catalog.jobs.length, 4);
   assert.equal(new Set(catalog.jobs.map(j=>j.id)).size, 4);
   assert.equal(new Set(catalog.jobs.map(j=>j.applyUrl)).size, 4);
-  const page = await run(ok(catalog), '#%invalid');
+  const page = await run(ok(openCatalog), '#%invalid');
   assert.match(page.openCount.innerHTML, /4.*open roles/);
   for (const job of catalog.jobs) {
     assert.ok(page.jobList.innerHTML.includes(job.applyUrl));
@@ -38,7 +39,7 @@ test('four roles route to four distinct responder forms with labeled full-time a
 });
 test('unsafe, malformed and editor application links cannot become Apply links', async () => {
   for (const applyUrl of ['javascript:alert(1)','https://evil.example/form','not a URL','https://docs.google.com/forms/d/private/edit']) {
-    const page=await run(ok({jobs:[{...catalog.jobs[0],applyUrl}]}));
+    const page=await run(ok({jobs:[{...openCatalog.jobs[0],applyUrl}]}));
     assert.match(page.jobList.innerHTML,/Applications opening soon/);
     assert.doesNotMatch(page.jobList.innerHTML,/Apply via Google Forms/);
   }
@@ -56,7 +57,7 @@ test('closed roles are hidden and failures differ from an empty catalog', async 
 
 
 test('annual equivalents handle single rates and omit absent or invalid pay', async () => {
-  const job = catalog.jobs[0];
+  const job = openCatalog.jobs[0];
   const fixed = await run(ok({jobs: [{...job, pay: {currency: 'USD', hourlyMin: 50}}]}));
   assert.match(fixed.jobList.innerHTML, /Full-time equivalent: USD \$104,000 \/ year/);
   for (const pay of [undefined, {hourlyMin: -1}, {hourlyMin: 'invalid'}, {hourlyMin: 65, hourlyMax: 45}]) {
